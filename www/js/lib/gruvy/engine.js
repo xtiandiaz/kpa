@@ -48,6 +48,10 @@ var GAME = GAME || {
 	isPortrait : false,
 	editMode : false,
 	environment : GAME_ENVIRONMENT.web,
+	/* Preferably always leave aside
+	 * It will trigger testing routines for the development cycle 
+	 */
+	devMode : false,
 	
 	init : function() {
 		
@@ -85,7 +89,11 @@ var GAME = GAME || {
 		GAME.utils.tts.init();
 		
 		//LOAD GAME DATA
-		var dataLoader = new PIXI.JsonLoader("game-data.json", false);
+		if (GAME.devMode) {
+			var dataLoader = new PIXI.JsonLoader("dev.game-data.json", false);
+		} else {
+			var dataLoader = new PIXI.JsonLoader("game-data.json", false);
+		}
 		dataLoader.addEventListener("loaded", GAME._onGameDataLoaded);
 		dataLoader.load();
 	},
@@ -847,6 +855,16 @@ GAME.utils = {
 	    }
 	    return color;
 	},
+	
+	getQueryVariable : function(variable) {
+		var query = window.location.search.substring(1);
+		var vars = query.split("&");
+		for (var i=0;i<vars.length;i++) {
+			var pair = vars[i].split("=");
+		    if(pair[0] == variable){return pair[1];}
+		}
+		return(false);
+	}
 
 };
 

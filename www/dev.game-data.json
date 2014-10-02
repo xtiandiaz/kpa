@@ -1,7 +1,8 @@
 {"assetBatches" : {
 
 		"graphic" : {
-			"ui" : [{"id": "tile-font", "src": "font/tts_tile_font-hd.fnt"},
+			"ui" : [{"id": "codecanyon-ad", "src": "dev/codecanyon.png"},
+					{"id": "tile-font", "src": "font/tts_tile_font-hd.fnt"},
 					{"id": "headings-font", "src": "font/headings_font-hd.fnt"},
 					{"id": "frame-reflection", "src": "texture/ui/basic_reflection.png"},
 				    {"id": "desk-wood", "src": "texture/ui/desk_wood.jpg"},

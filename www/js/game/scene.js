@@ -6,9 +6,6 @@ function MenuScene(sID) {
 
 	Scene.call(this, sID);
 	this.count = this.count2 = 0;
-
-	this.enableDecoBgTiles = false;
-	this.decoFrame = 0;
 }
 
 MenuScene.prototype = Object.create(Scene.prototype);
@@ -53,18 +50,6 @@ MenuScene.prototype.init = function() {
 	this.bg = new PIXI.TilingSprite(bgTexture, ss.w, ss.h);
 	this.addChild(this.bg);
 
-	if (this.enableDecoBgTiles) {
-		///Decorative colorful puzzle tiles
-		this.decoTiles = [];
-		this.refSS = GAME.getScreenSize();
-		///console.log(this.refSS);
-		for (var i = 0; i < 5; i++) {
-			var tile = this.getDecoTile();
-			this.decoTiles.push(tile);
-			this.addChild(tile);
-		}
-	}
-	
 	// Logo
 	this.logo = new PIXI.Sprite(GAME.AssetManager.fromCache("logo"));
 	this.logo.anchor = new PIXI.Point(0.5, 0.5);
@@ -77,6 +62,14 @@ MenuScene.prototype.init = function() {
 	this.touchStartArea.interactive = this.touchStartArea.buttonMode = true;
 	this.touchStartArea.tap = this.touchStartArea.click = this.onMenuOption.bind(this, "start");
 	this.addChild(this.touchStartArea);
+	
+	//Codecanyon banner
+	if (GAME.devMode) {
+		this.ccAd = new PIXI.Sprite(GAME.AssetManager.fromCache("codecanyon-ad"));
+		this.addChild(this.ccAd);
+		this.ccAd.interactive = this.ccAd.buttonMode = true;
+		this.ccAd.click = this.ccAd.tap = function() {window.location.assign("http://www.codecanyon.net/?ref=gruvy");};
+	}
 };
 
 MenuScene.prototype.onMenuOption = function(option, data) {
@@ -106,6 +99,10 @@ MenuScene.prototype.onResize = function() {
 	///
 	this.logo.position = GAME.UI.getScreenAnchor("MC");
 	this.logo.baseScale = GAME.UI.getResponsiveScale(0.4);
+	
+	if (GAME.devMode) {
+		this.ccAd.position = GAME.UI.getScreenAnchor("TL", 20);
+	}
 
 };
 
@@ -128,17 +125,6 @@ MenuScene.prototype.update = function() {
 	this.count2 += 0.01;
 	this.bg.tilePosition.x += Math.sin(this.count2);
 	this.bg.tilePosition.y += 1;
-
-	if (this.enableDecoBgTiles) {
-		for (var i = 0; i < this.decoTiles.length; i++) {
-			this.decoTiles[i].y += 1;
-			this.decoTiles[i].x += Math.sin(this.count2);
-			if (this.decoTiles[i].y > (this.refSS.h+this.decoTiles[i].vExtent)) {
-				//this.removeChild(this.decoTiles[i]);
-				this.getDecoTile(this.decoTiles[i]);
-			}
-		};
-	}
 };
 
 MenuScene.prototype.onSettingsSelected = function(data) {
@@ -167,18 +153,6 @@ MenuScene.prototype.onResume = function() {
 	this.base.onResume.call(this);
 	/////
 	GAME.SoundManager.playTrack("intro", {loop:-1});
-};
-
-MenuScene.prototype.getDecoTile = function(tile) {
-	this.decoFrame = (this.decoFrame>4)?0:++this.decoFrame;
-	if (tile === undefined)
-		tile = new PIXI.Sprite.fromFrame("dt"+this.decoFrame+".png");
-	tile.baseTexture = tile.texture = new PIXI.Texture.fromFrame("dt"+this.decoFrame+".png");
-	tile.rotation = Math.random()*2*Math.PI;
-	tile.scale = new PIXI.Point(0.6,0.6);
-	tile.vExtent = (tile.height > tile.width)?tile.height:tile.width;
-	tile.position = {x:GAME.utils.getRandomInRange(0, this.refSS.w), y:-(tile.vExtent+Math.random()*500)};
- 	return tile;
 };
 
 /* ==========================================================================
