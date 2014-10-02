@@ -1,0 +1,72 @@
+{"assetBatches" : {
+
+		"graphic" : {
+			"ui" : [{"id": "tile-font", "src": "font/tts_tile_font-hd.fnt"},
+					{"id": "headings-font", "src": "font/headings_font-hd.fnt"},
+					{"id": "frame-reflection", "src": "texture/ui/basic_reflection.png"},
+				    {"id": "desk-wood", "src": "texture/ui/desk_wood.jpg"},
+		  		    {"id": "frame-texture", "src": "texture/ui/frame_texture.png"},
+		  		    {"id": "logo", "src": "texture/ui/logo.png"},
+		  		    {"id": "ui-misc", "src": "texture/ui/ui_misc.json"}
+		 	],
+		 	"editor" : [{"id": "save-btn", "src": "texture/editor/save_btn.png"}
+			]
+		},
+		"sound" : {
+			"ui" : [
+				{"id":"puzzle-completed", "src":"puzzle_completed.mp3"},
+				{"id":"tile-match", "src":"tile_match.mp3"},
+				{"id":"intro", "src":"intro.mp3"}
+			]
+		}
+	},
+
+	"episodes": [
+				
+		{"id":"farm",
+		"name":"The Farm",
+		"rs":1.0703125,
+		"puzzles":[	
+			{"id":"pig",
+			"access":{"x":129.84,"y":490.3,"z":4},
+			"TTSWord":"Pig"},	
+			{"id":"sheep",
+			"access":{"x":412.61,"y":476.6,"z":1},
+			"TTSWord":"Sheep"},	
+			{"id":"horse",
+			"access":{"x":655.34,"y":263.69,"z":2},
+			"TTSWord":"Horse"},	
+			{"id":"chicken",
+			"access":{"x":653.27,"y":573.39,"z":3},
+			"TTSWord":"Chicken"},	
+			{"id":"cow",
+			"access":{"x":837.53,"y":463.75,"z":4},
+			"TTSWord":"Cow"},	
+			{"id":"tractor",
+			"access":{"x":324.27,"y":320.45,"z":5},
+			"TTSWord":"Tractor"},	
+			{"id":"tree",
+			"access":{"x":944.59,"y":77.7,"z":6},
+			"TTSWord":"Tree"},	
+			{"id":"barn",
+			"access":{"x":7.68,"y":279.68,"z":3},
+			"TTSWord":"Barn"}
+		]},
+
+		{"id":"test",
+		"name":"Test",
+		"rs":0.8859375,
+		"puzzles":[	
+			{"id":"circle",
+			"access":{"x":124.98,"y":215.17,"z":11},
+			"TTSWord":"Circle"},	
+			{"id":"triangle",
+			"access":{"x":421.13,"y":215.76,"z":8},
+			"TTSWord":"Triangle"},	
+			{"id":"square",
+			"access":{"x":723.97,"y":215.7,"z":14},
+			"TTSWord":"Square"}
+		]}
+
+	]
+}
