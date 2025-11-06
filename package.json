@@ -1,0 +1,22 @@
+{
+  "name": "kpa",
+  "version": "1.0.0",
+  "description": "Kids Puzzle Adventure",
+  "homepage": "https://github.com/xtiandiaz/kpa#readme",
+  "bugs": {
+    "url": "https://github.com/xtiandiaz/kpa/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/xtiandiaz/kpa.git"
+  },
+  "license": "ISC",
+  "author": "Cristian Díaz",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "vite"
+  },
+  "devDependencies": {
+    "vite": "^7.2.1"
+  }
+}

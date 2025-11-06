@@ -7,3 +7,5 @@ www/assets/
 www/kpa.esproj/
 www/kpa.esproj/user.xtndiaz.espressostorage
 www/kpa.esproj/Project.espressostorage
+
+node_modules
