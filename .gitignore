@@ -1,11 +1,4 @@
-art_source/
-hooks/
-merges/
-platforms/
-plugins/
-www/assets/
-www/kpa.esproj/
-www/kpa.esproj/user.xtndiaz.espressostorage
-www/kpa.esproj/Project.espressostorage
+www/assets/sound
+www/assets/graphic/dev
 
 node_modules
